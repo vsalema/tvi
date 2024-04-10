@@ -1,167 +1,176 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en' class=''>
 <head>
-<meta charset="UTF-8">
-<title>dash player</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <link href="https://unpkg.com/videojs-max-quality-selector@0.9.1/dist/videojs-max-quality-selector.css" rel="stylesheet">
-<link rel="stylesheet" href="https://ia904708.us.archive.org/25/items/tresmin_20230107_0910/tresmin.css" rel="stylesheet" type="text/css">
- <link href="https://cdn.jsdelivr.net/npm/videojs-logo@2.1.1/dist/videojs-logo.css" rel="stylesheet">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
-	<style>
-@import url("https://ia601509.us.archive.org/22/items/tooltip_202210/tooltip.css");
-.container{margin: auto; width:700px;}
-.vjs-brand-container-link{position:relative;top:14px;left:0px;}
-body {
+<meta charset='UTF-8'>
+<title>CodePen Demo</title>
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+<link rel="stylesheet" href="css/oqq.css">
+<style>
+.shaka-controls-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   margin: 0;
-  height: 100%;
-  background: #000000;
-	  }
-  </style>
+  padding: 0;
+  width: 0%;
+  height: 0%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1;
+}
+@supports (-moz-appearance: none) {
+  .LiveChannels {
+    padding-right: 10px;
+    height: 622px;
+  }
+}
+</style>
 </head>
-<body translate="no">
+<body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.20.1/video.min.js"></script>
-<script src="https://unpkg.com/videojs-contrib-dash/dist/videojs-dash.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/videojs-logo@2.1.1/dist/videojs-logo.js"></script>
-<div class="video-container player">
-	<div class="hero__headline__name" style="position: absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; text-align: center; top: 6px; width: 100%; height: 100%;z-index:1000;">
-<div class="moveToVideoJs" style="position: absolute; margin-left: auto; margin-right: auto; left: 49px; right: 0; text-align: center; top: 4px; width:  visibility: visible;"><span><span class="hero__headline__name" style="color: #fff;font-weight: bold;"></span></span>
-	</div></div>
-<div id="player" hidden></div>
-<video class='playads js-video video-js vjs-16-9 vjs-big-play-centered'  controls='' autoplay height='520' id='js-video-horsa' playsinline width='920' poster="">
-
-</video>
-
-<video class='moveToVideoJs js-video-hidden js-video js-video video-js vjs-big-play-centered vjs-default-skin small-player'  controls='' autoplay height='160' id='js-video-hengest' playsinline width='300'></video>
-
- <script src="https://play.shidur.net/node_modules/video.js/dist/video.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/videojs-youtube/2.6.0/Youtube.min.js'></script>
-<script src='https://doctoral-integer.000webhostapp.com/buttontrailer2.js'></script>
-<script src="https://doctoral-integer.000webhostapp.com/const.js">
-</script>
-<script id="rendered-js">
-// url movie
-const stream_one = "https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/tvipt/sh/tvi.m3u8";
-// url trailer.
-const stream_two = "";
-const horsa = videojs('#js-video-horsa', options);
-const hengest = videojs('#js-video-hengest', options);
-// Assigning a stream to each one of them.
-horsa.src({ src: stream_one, type: 'application/x-mpegURL' });
-//'video/youtube','application/video/mp4','application/x-mpegURL',.
-hengest.src({ src: stream_two, type: 'application/x-mpegURL' });
-//'video/mp4','application/x-mpegURL','application/dash+xml'.
-const applyTransition = () => {
-const allPlayers = videojs.getAllPlayers();
-allPlayers.map(player => {
-    player.el().classList.toggle('js-video-hidden');
-    const isHidden = player.el().classList.contains('js-video-hidden');
-
-    if (player.paused() && !isHidden) {
-      player.play();
-    } else {
-      player.pause();
-    }
-  });
-};
-var myPlayer = videojs('js-video-hengest');
-myPlayer.ready(function () {
-  console.log("downloadvideo");
-  });
-const transitionButton = document.querySelector('#transition-toggle');
-transitionButton.addEventListener('click', () => {
-  applyTransition();
-});
-var video = document.getElementById('js-video-horsa');
-		  var video = document.getElementById("player").innerHTML =
-			 horsa.on("pause", function () {
-				$('.hero__headline__name').fadeIn(1500);
-			});
-            horsa.on("play", function () {
-				$('.hero__headline__name').fadeOut(1500);
-				
-			});
-  </script>
-<script src="https://doctoral-integer.000webhostapp.com/spriteThumbnails.js"></script>
-<script>
-    var player = videojs('js-video-horsa');
-    player.spriteThumbnails({
-    interval:1,
-    url: '',
-    vertical: "true",
-    start: 0,
-    duration: 8,
-    interval: 2.4,
-	  width: 120,
-    height: 67
-  });
-  </script>
-
-
-  <script src="https://players.brightcove.net/videojs-quality-menu/1/videojs-quality-menu.min.js"></script>
-<script src="https://unpkg.com/videojs-max-quality-selector@0.9.1/dist/videojs-max-quality-selector.min.js"></script>
-<script src="https://doctoral-integer.000webhostapp.com/maxquality.js"></script>
-<script src="https://doctoral-integer.000webhostapp.com/share.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/videojs-logo@2.1.1/dist/videojs-logo.js"></script>
-<script>
-    var player = videojs('js-video-horsa');
-    // initialize the plugin
-    var shareOptions = {
-      url: window.location.href,
-      
-    }
-    player.share(shareOptions);
-    (function(window, videojs) {
-      var examplePlayer = window.examplePlayer = videojs('js-video-horsa');
-      var logo = window.logo = examplePlayer.logo({
-        image: '',
-        url: '//yourdomaine.com/',
-        width: 120,
-        fadeDelay: null
-      });
-    }(window, window.videojs));
-  player.on('play', () => {
-  player.logo().hide();
-  player.on('pause', () => {
-  player.logo().show();
-});
-  });
-  </script>
-<script src="https://doctoral-integer.000webhostapp.com/vjs-cs-play.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/videojs-seek-buttons/dist/videojs-seek-buttons.min.js"></script>
-<script>
-  var player = videojs('js-video-horsa');
-  player.seekButtons({
-    forward: 30,
-    back: 10
-  });
-</script>
-<script>
-var player = videojs('js-video-horsa');
-var myButton = player.controlBar.addChild("button");
-myButton.controlText('rafraîchir Player');
-      player.controlBar
-        .el()
-        .insertBefore(
-          myButton.el(),
-          player.controlBar.getChild('fullscreenToggle').el()
-        );
-var myButtonDom = myButton.el();
-myButtonDom.innerHTML = '<i class="fa fa-refresh fa-spin" style="font-size:18px;color:red"></i>';
-text: 'rafraîchir Player';
-
-myButtonDom.onclick = function(){
-  window.open('https://filmsgratos.com/', '_blank');
-}  
-
-  this.player.addEvent('progress', this.player.currentTime(seekTime));
-// should be ('addEvent' is now 'on' in 4.0)
-this.player.on('progress', function(){ 
-  this.player.currentTime(seekTime); 
-});
-  </script>
- </body>
+<div class="LiveSectionContainer" bis_skin_checked="1"><div class="LiveSection" bis_skin_checked="1"><div class="PreviewPlayer" bis_skin_checked="1"><div data-shaka-player-container="" shaka-controls="true" class="shaka-video-container" bis_skin_checked="1"  style="cursor: none;">
+  
+  
+ <div style="overflow:hidden; padding-bottom:56.25%; position:relative; display:block; width: 100%">
+              <iframe id="vid_frame" width="100%" height="100%" src="https://vsalema.github.io/tvi/" frameborder="0" allowfullscreen="" scrolling="no" style="position:absolute; top:0; left: 0"></iframe>
+             </div>
+  
+ 
+  
+  <div class="shaka-controls-container" bis_skin_checked="1"><div class="shaka-scrim-container" bis_skin_checked="1"></div><div class="shaka-server-side-ad-container" bis_skin_checked="1"></div><div class="shaka-bottom-controls shaka-no-propagation" bis_skin_checked="1"><div class="shaka-ad-controls shaka-hidden" bis_skin_checked="1"><div class="shaka-ad-position shaka-hidden" bis_skin_checked="1"><span class="shaka-ad-position-span"></span></div><div class="shaka-ad-counter" bis_skin_checked="1"><span class="shaka-ad-counter-span"></span></div></div><div class="shaka-controls-button-panel shaka-show-controls-on-mouse-over" bis_skin_checked="1"><button id="goToStart-button" class="PlayerTooltip" data-tooltip-content="Reprendre du début"><img src="/img/player/go-to-start.svg"></button><button id="goToLive-button" class="PlayerTooltip disabled" data-tooltip-content="Revenir au direct"><img src="/img/player/go-to-live.svg"></button><button type="button" class="shaka-small-play-button material-icons-round shaka-tooltip" aria-label="Pause">pause</button><button type="button" class="shaka-current-time" aria-label="Accéder à la partie la plus récente du direct">- 0:01</button><div class="shaka-spacer" aria-hidden="true" bis_skin_checked="1"></div><button type="button" class="shaka-mute-button material-icons-round shaka-tooltip" aria-label="Couper le son">volume_up</button><div class="shaka-range-container shaka-volume-bar-container" style="background: linear-gradient(to right, rgb(255, 255, 255) 100%, rgba(255, 255, 255, 0.54) 100%, rgba(255, 255, 255, 0.54) 100%);" bis_skin_checked="1"><input class="shaka-range-element shaka-volume-bar" type="range" step="any" min="0" max="1" aria-label="Volume"></div><button type="button" class="shaka-fullscreen-button material-icons-round shaka-tooltip" aria-label="Plein écran">fullscreen</button><button type="button" class="shaka-overflow-menu-button shaka-no-propagation material-icons-round shaka-tooltip" aria-label="Plus de paramètres">more_vert</button></div><div class="shaka-range-container shaka-seek-bar-container" style="background: linear-gradient(to right, rgb(255, 255, 255) 99.8351%, rgb(255, 255, 255) 99.8351%, rgb(255, 255, 255) 99.9324%, rgba(255, 255, 255, 0.54) 99.9324%, rgba(255, 255, 255, 0.54) 100%, rgba(255, 255, 255, 0.3) 100%);" bis_skin_checked="1"><div class="shaka-ad-markers" bis_skin_checked="1"></div><input class="shaka-range-element shaka-seek-bar shaka-no-propagation shaka-show-controls-on-mouse-over" type="range" step="any" min="1712671204.45" max="1712673326.8500001" aria-label="Chercher"></div></div><div class="shaka-overflow-menu shaka-no-propagation shaka-show-controls-on-mouse-over shaka-hidden" bis_skin_checked="1"><button type="button" class="shaka-overflow-button shaka-caption-button shaka-tooltip-status" aria-pressed="false" aria-label="Sous-titres" shaka-status="Désactivée"><i class="material-icons-round">closed_caption_disabled</i><label class="shaka-overflow-button-label shaka-overflow-menu-only"><span>Sous-titres</span><span class="shaka-current-selection-span">Désactivée</span></label></button><button type="button" class="shaka-overflow-button shaka-language-button shaka-tooltip-status" aria-label="Langue" shaka-status="Français"><i class="material-icons-round">language</i><label class="shaka-overflow-button-label shaka-overflow-menu-only"><span>Langue</span><span class="shaka-current-selection-span">Français</span></label></button><button type="button" class="shaka-pip-button shaka-tooltip shaka-hidden" aria-label="Utiliser le mode Picture-in-Picture"><i class="material-icons-round">picture_in_picture_alt</i><label class="shaka-overflow-button-label shaka-overflow-menu-only"><span>Picture-in-Picture</span><span class="shaka-current-selection-span">Désactivée</span></label></button></div><div class="shaka-no-propagation shaka-show-controls-on-mouse-over shaka-settings-menu shaka-hidden shaka-text-languages" bis_skin_checked="1"><button type="button" class="shaka-back-to-overflow-button" aria-label="Retour"><i class="material-icons-round">arrow_back</i><span>Sous-titres</span></button><button type="button"><span>Français</span></button><button type="button"><span>Français</span></button><button type="button" class="shaka-turn-captions-off-button" aria-selected="true"><span class="shaka-auto-span shaka-chosen-item">Désactivée</span><i class="material-icons-round shaka-chosen-item" aria-hidden="true">done</i></button></div><div class="shaka-no-propagation shaka-show-controls-on-mouse-over shaka-settings-menu shaka-hidden shaka-audio-languages" bis_skin_checked="1"><button type="button" class="shaka-back-to-overflow-button" aria-label="Retour"><i class="material-icons-round">arrow_back</i><span>Langue</span></button><button type="button" aria-selected="true"><span class="shaka-chosen-item">Français</span><i class="material-icons-round shaka-chosen-item" aria-hidden="true">done</i></button><button type="button"><span>Langue indéterminée</span></button><button type="button"><span>Français</span></button></div></div><div class="shaka-client-side-ad-container shaka-hidden" bis_skin_checked="1"></div><div class="shaka-spinner-container shaka-hidden" bis_skin_checked="1"><div class="shaka-spinner" bis_skin_checked="1"><svg class="shaka-spinner-svg" viewBox="0 0 30 30"><circle class="shaka-spinner-path" cx="15" cy="15" r="14.5" fill="none" stroke-width="1" stroke-miterlimit="10"></circle></svg></div></div><div class="shaka-text-container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;" bis_skin_checked="1"></div><div class="ShakaPlayerUiHeaderContainer" bis_skin_checked="1"><div class="Breadcrumb ShakaPlayerUiHeader" bis_skin_checked="1"><div class="CircularProgress" bis_skin_checked="1"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(216, 56, 37); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="112 45" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="xxx" alt="" style="max-width: 28px; max-height: 28px;"></div></div><div class="ShakaPlayerUiHeaderTitles" bis_skin_checked="1"><div class="Typography h3" bis_skin_checked="1"></div><div class="Typography h4" bis_skin_checked="1"></div></div></div></div><div style="position: fixed; z-index: 9999; inset: 16px; pointer-events: none;" bis_skin_checked="1"></div><img src="/img/player/back-arrow.svg" class="back-button"></div><img src="" alt="" style="display: none;"><video src="" style="display: none;"></video> </div><div class="LiveChannels" bis_skin_checked="1"><div class="LiveChannelRowContainer selected" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='//popcdn.day/play.php?stream=RTP1'"> 
+<img alt="" src="https://i.ytimg.com/vi/0NA-nxMKDZI/hqdefault.jpg" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(216, 56, 37); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="112 45" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://www.zupimages.net/up/24/15/mk0n.png" alt="" style="max-width: 38px; max-height: 38px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">001 - RTP 1</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a>
+  
+<div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://vsalema.github.io/rtp-int./'"> 
+<img alt="" src="https://www.atelevisao.com/wp-content/uploads/2012/03/RTP-Internacional-Nova-Imagem.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(68, 0, 246); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="67 90" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://www.zupimages.net/up/24/15/k7k7.png" alt="" style="max-width: 20px; max-height: 20px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1">
+  <div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">002 - RTP international</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a>
+  
+  
+  
+  <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+  <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://vsalema.github.io/tvi/'">
+ 
+    <img alt="" src="https://img.utdstc.com/screen/58e/6ce/58e6ce2eea6f0f2a63c689d0a5afff6981d4f6049d56b0e03904be41cccdee1f:600" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(213, 11, 47); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="63 94" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://upload.wikimedia.org/wikipedia/fr/6/63/TVI_logo_2017.png" alt="" style="max-width: 28px; max-height: 28px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">003 - TVI</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a>
+    
+    
+    
+    <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+  
+  <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://vsalema.github.io/tvi-reality/'">
+  <img alt="" src="https://www.zupimages.net/up/24/14/xplw.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(243, 156, 0); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="136 21" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://static.wikia.nocookie.net/logopedia/images/2/24/TVI_Reality.png" alt="" style="max-width: 40px; max-height: 48px;"></div></div></div></a>
+  
+  
+  
+  <div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">004 - TVI REALITY</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div><div 
+  
+  
+   
+   
+   
+class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://vsalema.github.io/tvi-ficcao/'"> 
+<img alt="" src="https://www.iol.pt/multimedia/oratvi/multimedia/imagem/id/616562540cf279ce41ddfe4f/" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(55, 123, 197); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="14 143" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/TVI_Fic%C3%A7%C3%A3o_%282017%29.png" alt="" style="max-width: 40px; max-height: 28px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">005 - TVI FICCAO</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a>
+  
+  
+  
+<div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+<a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://vsalema.github.io/tvi-africa/'">  
+<img alt="" src="https://www.verangola.net/va/images/cms-image-000016280.png" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(144, 0, 255); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="145 12" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://i.ibb.co/vBbSHB4/Tvi-africa.png" alt="" style="max-width: 40px; max-height: 28px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">006 - TVI AFRICA</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a>
+  
+  
+<div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://vsalema.github.io/sic/'"> 
+<img alt="" src="https://www.zupimages.net/up/24/13/ax1g.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(226, 100, 36); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="144 13" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://static.wikia.nocookie.net/logopedia/images/8/8d/SIC_2016_logo.png" alt="" style="max-width: 28px; max-height: 28px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">007 - SIC</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a>
+  
+<div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://vsalema.github.io/SICN/'"> 
+<img alt="" src="https://www.zupimages.net/up/24/13/wsih.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/29ad2013589855.562759e048ecd.png" alt="" style="max-width: 28px; max-height: 28px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">008 - SIC NOTICIAS</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a>
+  
+ <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='//popcdn.day/play.php?stream=CMTVPT'"> 
+<img alt="" src="https://cdn.xl.pt/cofinaboostsolutions/uploads/2023/02/CBS-CM-CMTV.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://www.cm-tv.pt/i/logo-share.png" alt="" style="max-width: 50px; max-height: 50px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">009 - CMTV</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a> 
+  
+<div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://vsalema.github.io/CNN/'"> 
+<img alt="" src="https://www.iol.pt/multimedia/oratvi/multimedia/imagem/id/655f44cbd34e65afa2f7e249/1024" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://e1.pngegg.com/pngimages/206/434/png-clipart-logo-cnn-actualites-logo-de-nbc-medias-texte-rouge-ligne.png" alt="" style="max-width: 50px; max-height: 50px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">010 - CNN</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a>
+  
+ <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='//popcdn.day/go.php?stream=SPT1'"> 
+<img alt="" src="https://www.atelevisao.com/wp-content/uploads/2020/01/sport-tv-scaled-e1580486390688.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://www.zupimages.net/up/24/15/onw2.png" alt="" style="max-width: 38px; max-height: 50px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">011 - SPORT TV 1</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a> 
+  
+  <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://popcdn.day/go.php?stream=SPT2'"> 
+<img alt="" src="https://4c-tv.com/storage/uploads/img/20230406194233653ce05a51ef5653ce05a51f28.png" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://www.zupimages.net/up/24/15/4hqy.png" alt="" style="max-width: 38px; max-height: 50px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">012 - SPORT TV 2</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a>
+  
+ <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://popcdn.day/go.php?stream=ELEVEN2'"> 
+<img alt="" src="https://www.zupimages.net/up/24/13/mmfw.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://www.zupimages.net/up/24/15/hxjx.png" alt="" style="max-width: 40px; max-height: 30px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">013 - ELEVEN 2</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a> 
+  
+ <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://popcdn.day/go.php?stream=BTV1'"> 
+<img alt="" src="https://www.zapping-tv.com/wp-content/uploads/2014/12/BTV.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://www.zupimages.net/up/24/15/xpxh.png" alt="" style="max-width: 50px; max-height: 50px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">014 - BENFICA TV</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a> 
+  
+ <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://popcdn.day/go.php?stream=SPORTING'"> 
+<img alt="" src="https://pplware.sapo.pt/wp-content/uploads/2017/06/scp_00.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://www.zupimages.net/up/24/15/kzly.png" alt="" style="max-width: 45px; max-height: 50px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">015 - SPORTING TV</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a> 
+  
+ <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://popcdn.day/go.php?stream=Canal11'"> 
+<img alt="" src="https://www.zupimages.net/up/24/13/qj99.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Logo_Canal_11_FPF.svg/494px-Logo_Canal_11_FPF.svg.png" alt="" style="max-width: 28px; max-height: 28px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">016 - CANAL 11</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a> 
+  
+ <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='//popcdn.day/go.php?stream=BEINSPORT2FR'"> 
+<img alt="" src="https://ramspoort.net/wp-content/uploads/2024/01/IMG-20240121-WA0002.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://www.planetecsat.com/wp-content/uploads/2022/10/beINSPORTS2.png" alt="" style="max-width: 38px; max-height: 50px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">017 - BEINSPORT 2</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a> 
+  
+ <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://popcdn.day/play.php?stream=NOSSTUDIOSPT'"> 
+<img alt="" src="https://www.magazine-hd.com/apps/wp/wp-content/uploads/2019/06/nos-studios.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://w7.pngwing.com/pngs/258/634/png-transparent-nos-primavera-sound-nos-audiovisuais-nos-comunicacoes-cinemas-nos-norteshopping-portugal-logo-company-text-logo.png" alt="" style="max-width: 38px; max-height: 50px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">018 - NOS-STUDIOS</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a> 
+  
+ <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://popcdn.day/play.php?stream=OdisseiaPT'"> 
+<img alt="" src="https://www.zupimages.net/up/24/13/rxye.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://static.wikia.nocookie.net/logopedia/images/e/ea/Odisseia_logo.png" alt="" style="max-width: 38px; max-height: 38px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">019 - ODISSEIA</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a> 
+  
+<div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://popcdn.day/play.php?stream=NationalGeographicPT'"> 
+<img alt="" src="https://content.quiksilver.com/www/marketing/news/mainImages/848x469_1583509167_national-geographic-future-nature-thumb.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://w7.pngwing.com/pngs/42/706/png-transparent-logo-national-geographic-nat-geo-people-discovery-channel-brand-design-angle-text-rectangle.png" alt="" style="max-width: 38px; max-height: 50px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">020 - NATIONAL-GEOGRAPHIC</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a>  
+  
+ <div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://playertv.net/tv.php?c=globo-sp'"> 
+<img alt="" src="https://static.cdn.pleno.news/2021/12/dea08b3a59f0ead91fbafebd63ab38e9.jpeg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://www.pngfind.com/pngs/m/606-6064517_tv-globo-globo-logo-hd-png-download.png" alt="" style="max-width: 28px; max-height: 38px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">021 - TV GLOBO</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a> 
+  
+<div class="LiveChannelRowContainer" bis_skin_checked="1"><div class="LiveChannelRow" bis_skin_checked="1"><div class="LiveChannelThumbnailContainer" bis_skin_checked="1"><div class="LiveChannelThumbnail" bis_skin_checked="1">
+  
+ <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='https://playertv.net/tv.php?c=record'"> 
+<img alt="" src="https://www.ocafezinho.com/wp-content/uploads/2023/07/recordtv-e-uma-rede-de-televisao-comercial-20200923-scaled-1.jpg" class="LiveChannelThumbnailImage" width="176" height="99"><div class="CircularProgress small showProgress" style="width: 56px; height: 56px;" bis_skin_checked="1"><div class="circleBackground" bis_skin_checked="1"><svg width="100%" height="100%"><circle style="stroke: var(--color-gray500); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="157" stroke-dashoffset="0"></circle><circle style="stroke: rgb(239, 18, 19); stroke-width: 4px;" r="25" cx="50%" cy="50%" fill="transparent" stroke-dasharray="138 19" stroke-dashoffset="0" stroke-linecap="round"></circle></svg></div><img src="https://upload.wikimedia.org/wikipedia/fr/a/aa/Rede_Record_logo_2012.png" alt="" style="max-width: 28px; max-height: 38px;"></div></div></div><div class="LiveChannelDataContainer" bis_skin_checked="1"><div class="LiveChannelData" bis_skin_checked="1"><div class="Typography body3 LiveChannelHeader" bis_skin_checked="1">021 - TV GLOBO</div><div class="LiveChannelTitlesContainer" bis_skin_checked="1"><div class="Typography bold body2 LiveChannelTitle" bis_skin_checked="1"></div><div class="Typography body3 LiveChannelSubtitle" bis_skin_checked="1"></div></div></div></div></div></div></a> 
+</div></div></div>
+</body>
 </html>
