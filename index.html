@@ -25,7 +25,7 @@
 <meta name='msapplication-square150x150logo' content='https://tvi.iol.pt/icons/mstile-150x150.png'/>
 <meta name='msapplication-wide310x150logo' content='https://tvi.iol.pt/icons/mstile-310x150.png'/>
 <meta name='msapplication-square310x310logo' content='https://tvi.iol.pt/icons/mstile-310x310.png'/>
-
+<link href="https://unpkg.com/videojs-max-quality-selector@0.9.1/dist/videojs-max-quality-selector.css" rel="stylesheet">
     <link rel="canonical" href="https://codepen.io/mikehatfield/pen/zYzEzvb">
   <link href="https://ia904708.us.archive.org/25/items/tresmin_20230107_0910/tresmin.css" rel="stylesheet" />
   
@@ -100,7 +100,13 @@ body {
 </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
-      <script id="rendered-js" >
+     
+  
+  <script src="https://players.brightcove.net/videojs-quality-menu/1/videojs-quality-menu.min.js"></script>
+<script src="https://unpkg.com/videojs-max-quality-selector@0.9.1/dist/videojs-max-quality-selector.min.js"></script>
+ <script src="https://ia600404.us.archive.org/10/items/maxquality_202405/maxquality.js"></script> 
+  
+  <script id="rendered-js" >
 // Clears console from unwanted output.
 console.clear();
 
@@ -163,9 +169,13 @@ transitionButton.addEventListener('click', () => {
   applyTransition();
 });
 //# sourceURL=pen.js
-    </script>
+    
+  var player = videojs('js-video-horsa');
+player.maxQualitySelector({
+  'defaultQuality': 2 // Make the video start playing at the highest quality possible
+});
+  </script>
 
-  
 </body>
 
 </html>
