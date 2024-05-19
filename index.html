@@ -25,57 +25,147 @@
 <meta name='msapplication-square150x150logo' content='https://tvi.iol.pt/icons/mstile-150x150.png'/>
 <meta name='msapplication-wide310x150logo' content='https://tvi.iol.pt/icons/mstile-310x150.png'/>
 <meta name='msapplication-square310x310logo' content='https://tvi.iol.pt/icons/mstile-310x310.png'/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-  <link rel='stylesheet' href='https://unpkg.com/plyr@3/dist/plyr.css'>
-  <style>
-	body {
+    <link rel="canonical" href="https://codepen.io/mikehatfield/pen/zYzEzvb">
+  <link href="https://ia904708.us.archive.org/25/items/tresmin_20230107_0910/tresmin.css" rel="stylesheet" />
+  
+  
+  
+<style>
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.player {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  visibility: hidden;
+}
+
+.video-js {
+  position: absolute;
+}
+
+.js-video-hidden {
+  z-index: -1;
+}
+
+#transition-toggle {
+  border: none;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 0px 0px 10px 10px;
+  cursor: pointer;
+  
+  background: #7d53de;
+  color: white;
+  transition: background-color .1s ease-in-out;
+}
+
+#transition-toggle:hover {
+  background: #3f2a9f;
+}
+
+  body {
 
   margin: 0;
   height: 100%;
   background: #000000;
 	  }
-	</style>
-	</head>
-	<body>
-<div class="container">
-	<video autoplay controls crossorigin playsinline poster=""></video>
-</div>
-<!-- Plyr resources and browser polyfills are specified in the pen settings -->
-<!-- Hls.js 0.9.x and 0.10.x both have critical bugs affecting this demo. Using fixed git hash to when it was working (0.10.0 pre-release), until https://github.com/video-dev/hls.js/issues/1790 has been resolved -->
-<script src="https://cdn.rawgit.com/video-dev/hls.js/18bb552/dist/hls.min.js"></script>
-<script src='https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL'></script>
-<script src='https://unpkg.com/plyr@3'></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-	const source = 'https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/tvipt/sh/tvi.m3u8';
-	const video = document.querySelector('video');
-	
-	// For more options see: https://github.com/sampotts/plyr/#options
-	// captions.update is required for captions to work with hls.js
-	const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
-	
-	if (!Hls.isSupported()) {
-		video.src = source;
-	} else {
-		// For more Hls.js options, see https://github.com/dailymotion/hls.js
-		const hls = new Hls();
-		hls.loadSource(source);
-		hls.attachMedia(video);
-		window.hls = hls;
-		
-		// Handle changing captions
-		player.on('languagechange', () => {
-			// Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
-			setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
-		});
-	}
-	
-	// Expose player so it can be used from the console
-	window.player = player;
-});
+  </style>
 
+  <script>
+  window.console = window.console || function(t) {};
 </script>
-		
-	</body>
-</html>	
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="player">
+  <video autoplay class="js-video vjs-16-9 js-video video-js vjs-big-play-centered col-12" height="720" id="js-video-horsa" controls width="1024"></video>
+  <video class="js-video-hidden js-video js-video video-js vjs-big-play-centered col-12" height="720" id="js-video-hengest" controls width="1024"></video>
+</div>
+<div class="content">
+  <button id="transition-toggle">transition to another video</button>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+      <script id="rendered-js" >
+// Clears console from unwanted output.
+console.clear();
+
+// Player options on instantiation.
+const options = {
+  autoSetup: false,
+  preload: 'metadata',
+  autoplay: false,
+  loadingSpinner: true,
+  html5: {
+    nativeControlsForTouch: false,
+    nativeAudioTracks: false,
+    nativeVideoTracks: false,
+    hls: {
+      limitRenditionByPlayerDimensions: false,
+      smoothQualityChange: true,
+      bandwidth: 6194304,
+      overrideNative: true } } };
+
+
+
+
+// HLS Streams, one for each player.
+const stream_one = "https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/tvipt/sh/tvi.m3u8";
+const stream_two = "";
+
+// Instantiating two players.
+const horsa = videojs('#js-video-horsa', options);
+const hengest = videojs('#js-video-hengest', options);
+
+// Assigning a stream to each one of them.
+horsa.src({ src: stream_one, type: 'application/x-mpegURL' });
+hengest.src({ src: stream_two, type: 'application/x-mpegURL' });
+
+// Toggle both players visibility to apply a transition, revealing the hidden one and removing the current visible one from view.
+const applyTransition = () => {
+  // Gets all instances of players.
+  const allPlayers = videojs.getAllPlayers();
+
+  // For each player:
+  // 1. Reveals if hidden, hides if visible.
+  // 2. Plays if revealed, pauses if hidden.
+  allPlayers.map(player => {
+    player.el().classList.toggle('js-video-hidden');
+    const isHidden = player.el().classList.contains('js-video-hidden');
+
+    if (player.paused() && !isHidden) {
+      player.play();
+    } else {
+      player.pause();
+    }
+  });
+};
+
+// Getting a reference of the transition button.
+const transitionButton = document.querySelector('#transition-toggle');
+
+// Each time the button is clicked the transition is applied.
+transitionButton.addEventListener('click', () => {
+  applyTransition();
+});
+//# sourceURL=pen.js
+    </script>
+
+  
+</body>
+
+</html>
