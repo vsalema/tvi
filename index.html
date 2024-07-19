@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-<meta charset="UTF-8">
-<title>tvi</title>
+<meta name="theme-color" content="#ff0015">  
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
 <link sizes='57x57' rel='apple-touch-icon' href='https://tvi.iol.pt/icons/apple-touch-icon-57x57.png'/>
 <link sizes='60x60' rel='apple-touch-icon' href='https://tvi.iol.pt/icons/apple-touch-icon-60x60.png'/>
 <link sizes='72x72' rel='apple-touch-icon' href='https://tvi.iol.pt/icons/apple-touch-icon-72x72.png'/>
@@ -26,153 +28,162 @@
 <meta name='msapplication-wide310x150logo' content='https://tvi.iol.pt/icons/mstile-310x150.png'/>
 <meta name='msapplication-square310x310logo' content='https://tvi.iol.pt/icons/mstile-310x310.png'/>
 <link href="https://unpkg.com/videojs-max-quality-selector@0.9.1/dist/videojs-max-quality-selector.css" rel="stylesheet">
-    <link rel="canonical" href="https://codepen.io/mikehatfield/pen/zYzEzvb">
-  <link href="https://www.nlm.nih.gov/scripts/videojs/skins/treso/videojs.min.css" rel="stylesheet" />
-  <style>
-body {
-  font-family: sans-serif;
-  font-size: 16px;
-}
+<title>tvi</title>
+<!-- LOAD CDN CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
 
-.player {
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.0/css/nice-select.css">
 
-.content {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  visibility: hidden;
-}
+<link rel="stylesheet" href="https://www.goiptv.top/site_assets/css/font-awesome.min.css">
 
-.video-js {
-  position: absolute;
-}
+   
+<link rel="stylesheet" href="https://www.goiptv.top/site_assets/css/splide.min.css">
 
-.js-video-hidden {
-  z-index: -1;
-}
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap" rel="stylesheet">
 
-#transition-toggle {
-  border: none;
-  font-size: 1.5rem;
-  padding: 10px;
-  border-radius: 0px 0px 10px 10px;
-  cursor: pointer;
+ 
+ <link href="https://www.goiptv.top/site_assets/videojs_player/css/videojs_style1.min.css" rel="stylesheet" type="text/css" />
+       
+<style>
+#myVideo {
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+
   
-  background: #7d53de;
-  color: white;
-  transition: background-color .1s ease-in-out;
+  }
+
+video {
+	width: 100%;
 }
 
-#transition-toggle:hover {
-  background: #3f2a9f;
-}
-
-  body {
-
-  margin: 0;
-  height: 100%;
-  background: #000000;
-	  }
+ .row > * {
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * .0);
+  padding-left: calc(var(--bs-gutter-x) * .0);
+  margin-top: var(--bs-gutter-y);
+} 
   </style>
+  </head>
+<body>
+<div class="page-content-area vfx-item-ptb pt-0">
 
-  <script>
-  window.console = window.console || function(t) {};
-</script>
-
+  <div class="container-fluid bg-dark video-player-base"> 
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="video-posts-video">         
+          
+              <video id="v_player" class="video-js vjs-big-play-centered skin-blue vjs-16-9" controls preload="auto" playsinline crossorigin="anonymous" width="640" height="450" poster="https://www.iol.pt/multimedia/oratvi/multimedia/imagem/id/63ee088a0cf28f3e15cc582e/" data-setup="{}" autoplay="true">
+							  	
+		  	<!-- video source -->
+		            <source src="https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/tvipt/sh/tvi.m3u8" type="application/x-mpegURL" /> 
+          
+			<!-- worning text if needed -->
+			<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+</video>
+                 
+        </div>
+      </div>
+    </div>  
+  </div>
+<script src="https://www.goiptv.top/site_assets/videojs_player/js/videojs.min.js"></script>
+<script src="https://www.goiptv.top/site_assets/videojs_player/plugins/videojs-chromecast.min.js"></script>
   
-  
-</head>
-
-<body translate="no">
-  <div class="player">
-  <video autoplay class="js-video vjs-16-9 js-video video-js vjs-big-play-centered col-12" height="720" id="js-video-horsa" controls width="1024"></video>
-  <video class="js-video-hidden js-video js-video video-js vjs-big-play-centered col-12" height="720" id="js-video-hengest" controls width="1024"></video>
-</div>
-<div class="content">
-  <button id="transition-toggle">transition to another video</button>
-</div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
-     
-  
-  <script src="https://players.brightcove.net/videojs-quality-menu/1/videojs-quality-menu.min.js"></script>
-<script src="https://unpkg.com/videojs-max-quality-selector@0.9.1/dist/videojs-max-quality-selector.min.js"></script>
- <script src="https://ia600404.us.archive.org/10/items/maxquality_202405/maxquality.js"></script> 
-  
-  <script id="rendered-js" >
-// Clears console from unwanted output.
-console.clear();
-
-// Player options on instantiation.
-const options = {
-  autoSetup: false,
-  preload: 'metadata',
-  autoplay: false,
-  loadingSpinner: true,
-  html5: {
-    nativeControlsForTouch: false,
-    nativeAudioTracks: false,
-    nativeVideoTracks: false,
-    hls: {
-      limitRenditionByPlayerDimensions: false,
-      smoothQualityChange: true,
-      bandwidth: 6194304,
-      overrideNative: true } } };
-
-
-
-
-// HLS Streams, one for each player.
-const stream_one = "https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/tvipt/sh/tvi.m3u8";
-const stream_two = "";
-
-// Instantiating two players.
-const horsa = videojs('#js-video-horsa', options);
-const hengest = videojs('#js-video-hengest', options);
-
-// Assigning a stream to each one of them.
-horsa.src({ src: stream_one, type: 'application/x-mpegURL' });
-hengest.src({ src: stream_two, type: 'application/x-mpegURL' });
-
-// Toggle both players visibility to apply a transition, revealing the hidden one and removing the current visible one from view.
-const applyTransition = () => {
-  // Gets all instances of players.
-  const allPlayers = videojs.getAllPlayers();
-
-  // For each player:
-  // 1. Reveals if hidden, hides if visible.
-  // 2. Plays if revealed, pauses if hidden.
-  allPlayers.map(player => {
-    player.el().classList.toggle('js-video-hidden');
-    const isHidden = player.el().classList.contains('js-video-hidden');
-
-    if (player.paused() && !isHidden) {
-      player.play();
-    } else {
-      player.pause();
-    }
-  });
-};
-
-// Getting a reference of the transition button.
-const transitionButton = document.querySelector('#transition-toggle');
-
-// Each time the button is clicked the transition is applied.
-transitionButton.addEventListener('click', () => {
-  applyTransition();
-});
-//# sourceURL=pen.js
+ <script>
+        var player = videojs('v_player',{techOrder:['chromecast','html5']});
     
-  var player = videojs('js-video-horsa');
-player.maxQualitySelector({
-  'defaultQuality': 2 // Make the video start playing at the highest quality possible
-});
-  </script>
+        player.viavi({
+            shareMenu: false,
+            
+            video_id: 'livetv19',
+            resume: true,
+            contextMenu: false,
+                      buttonRewind: false,
+          buttonForward: false,
+                      
+            mousedisplay:true,
+            textTrackSettings: false             
+        });
 
+        player.pip();
+
+        
+        player.chromecast({ metatitle: '', metasubtitle: 'Release : ' });         
+      
+      
+
+         player.on('vroll', function(event, data) {
+            var ad_id = data.id;
+            var action = data.action;
+
+            //alert(ad_id);
+            //alert(action);
+
+           });
+
+          
+      
+     player.ready(function(){
+     var player_ = this;
+     var show_on_start =true;
+     var close_delay=5;
+     var parent = this.el().parentNode;
+     console.log(parent.id);
+     var closeBtn = parent.querySelector('.over-close');
+     var overlay = parent.querySelector('.div-over');
+     var timer;
+     function delay() {
+      clearTimeout(timer);
+      if(parseInt(close_delay)>0) {
+        closeBtn.innerHTML=close_delay;
+        var timer =window.setTimeout(delay, 1000);
+        close_delay--;
+      } else {
+        closeBtn.innerHTML='';
+        closeBtn.className='over-close';
+      }
+     }
+     function showOverlay() {
+      console.log('delay:'+close_delay);
+      if(parseInt(close_delay)>0) {
+        delay();
+      } else {
+        closeBtn.className = 'over-close';
+      }
+      overlay.style.display='block';
+     }
+
+     closeBtn.addEventListener('click',function(e) {
+      overlay.style.display='none';
+      player_.play();
+     }, false);
+
+     this.on("pause", function(){
+      if (!this.seeking() && this.paused()) {
+        // Show overlay
+        showOverlay();
+      }
+     });
+
+     this.on('play', function(e) {
+      // Hide overlay
+      overlay.style.display='none';
+     });
+     if(show_on_start) {
+      this.pause(); showOverlay();
+     } else {
+      overlay.style.display='none';
+     }
+  });
+         
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.0/js/jquery.nice-select.min.js"></script>  
 </body>
-
 </html>
