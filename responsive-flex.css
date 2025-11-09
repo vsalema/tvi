@@ -1,0 +1,98 @@
+/* responsive-flex.css
+   Player Video.js adaptatif "flex", compatible overlays et tout layout.
+   - Ne force AUCUNE URL absolue
+   - N’utilise AUCUN hack CORS
+*/
+
+/* 1) Conteneur flexible universel */
+.player-flex {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;            /* évite les débordements en flex/grid */
+}
+
+/* 2) Cadre vidéo overlay-safe (ratio par défaut 16:9) */
+.player-frame {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  isolation: isolate;      /* cloisonne les z-index internes */
+}
+
+/* Variante ratio: par défaut on laisse Video.js gérer le mode fluid.
+   En renfort, on fige un ratio quand nécessaire via data-aspect.
+*/
+.player-frame[data-aspect="16/9"]::before,
+.player-frame[data-aspect="16:9"]::before {
+  content: "";
+  display: block;
+  padding-top: calc(9 / 16 * 100%);
+}
+.player-frame[data-aspect="4/3"]::before,
+.player-frame[data-aspect="4:3"]::before {
+  content: "";
+  display: block;
+  padding-top: calc(3 / 4 * 100%);
+}
+.player-frame > .video-js,
+.player-frame > video {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 3) Neutraliser tout width/height inline hérités (sans toucher au HTML) */
+#v_player,
+#v_player.video-js,
+.video-js.vjs-fluid {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+}
+
+/* 4) Overlays internes au player */
+.player-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;             /* au-dessus de la vidéo, sous menus si besoin */
+  pointer-events: none;    /* laisse passer les clics par défaut */
+}
+.player-overlay > * {
+  pointer-events: auto;    /* composants cliquables explicitement */
+}
+
+/* 5) Overlays flottants optionnels (coins) */
+.player-badge {
+  position: absolute;
+  right: .75rem;
+  top: .75rem;
+  z-index: 12;
+  display: inline-block;
+  padding: .35rem .5rem;
+  border-radius: .5rem;
+  font-size: .75rem;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+}
+
+/* 6) Compatibilité grilles/parents contraints */
+:where(.player-flex, .player-frame) {
+  min-height: 0;
+}
+:where(.player-flex, .player-frame) img,
+:where(.player-flex, .player-frame) video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 7) Sécurité responsive dans iframes/embeds */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
